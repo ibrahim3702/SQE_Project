@@ -94,10 +94,11 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.0.0-M5</version>  <!-- Update to a newer version -->
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>  <!-- Update to a newer version -->
 				<configuration>
-					<!-- Add any specific configuration here -->
+					<source>1.8</source>  <!-- Sets the Java source compatibility -->
+					<target>1.8</target>  <!-- Sets the Java target compatibility -->
 				</configuration>
 			</plugin>
 		</plugins>
