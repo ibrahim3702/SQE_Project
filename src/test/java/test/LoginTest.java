@@ -1,18 +1,18 @@
 package test;
 
 import org.junit.Test;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 
 import factory.DriverFactory;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import page.LoginPage;
 
 public class LoginTest {
     private WebDriver driver;
     private LoginPage loginPage;
 
-    @BeforeEach
+    @Before
     public void setUp() {
         driver = DriverFactory.getDriver("chrome"); // can be parameterized
         driver.get("http://example.com/login");
@@ -27,7 +27,7 @@ public class LoginTest {
         // Asserts to verify login success
     }
 
-    @AfterEach
+    @After
     public void tearDown() {
         if (driver != null) {
             driver.quit();
