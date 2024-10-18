@@ -5,7 +5,3 @@ Scenario Outline: Successful login
     When I enter username "<username>" and password "<password>"
     Then I should be redirected to the dashboard
 
-Examples:
-    | username | password |
-    | admin    | pass123  |
-    | user     | pass456  |
