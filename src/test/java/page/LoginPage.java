@@ -9,7 +9,7 @@ public class LoginPage {
     // Locators
     private By usernameInput = By.id("username");
     private By passwordInput = By.id("password");
-    private By loginButton = By.id("loginButton");
+    private By loginButton = By.id("submit");
 
     // Constructor
     public LoginPage(WebDriver driver) {
@@ -25,7 +25,13 @@ public class LoginPage {
         driver.findElement(passwordInput).sendKeys(password);
     }
 
-    public void clickLogin() {
+    public boolean clickLogin() {
         driver.findElement(loginButton).click();
+        String title = driver.findElement(By.className("post-title")).getText();
+        if(title.equals("Logged In Successfully"))
+        {
+        	return true;
+        }
+        return false;
     }
 }
