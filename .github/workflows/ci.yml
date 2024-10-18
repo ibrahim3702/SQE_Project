@@ -11,21 +11,19 @@ jobs:
     runs-on: windows-latest 
 
     steps:
-
-      
     - uses: actions/checkout@v2
       name: Checkout code
 
-    - name: Set up JDK 8
+    - name: Set up JDK 11  # Use Java 11 to match the project
       uses: actions/setup-java@v2
       with:
-        java-version: '8'
+        java-version: '11'
         distribution: 'adopt'
 
     - name: Cache Maven packages
       uses: actions/cache@v2
       with:
-        path: ~\m2 
+        path: ~/.m2  # Fixed the path for Maven cache
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-m2
@@ -43,4 +41,4 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: allure-report
-        path: target\site\allure-maven-plugin 
+        path: target/site/allure-maven-plugin
