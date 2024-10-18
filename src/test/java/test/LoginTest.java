@@ -1,37 +1,38 @@
 package test;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 
 import factory.DriverFactory;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import page.LoginPage;
 
 public class LoginTest {
+
     private WebDriver driver;
     private LoginPage loginPage;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         driver = DriverFactory.getDriver("chrome"); // can be parameterized
-        driver.get("http://example.com/login");
+        driver.get("https://practicetestautomation.com/practice-test-login/");
         loginPage = new LoginPage(driver);
     }
 
     @Test
     public void testLogin() {
-        loginPage.enterUsername("user");
-        loginPage.enterPassword("password");
-        loginPage.clickLogin();
-        // Asserts to verify login success
+        loginPage.enterUsername("student");
+        loginPage.enterPassword("Password123");
+        Assertions.assertTrue(loginPage.clickLogin());
+        // Additional assertions to verify login success
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
         if (driver != null) {
             driver.quit();
         }
     }
 }
-
